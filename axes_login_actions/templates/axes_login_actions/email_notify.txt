@@ -1,0 +1,17 @@
+{% block main %}
+Login attempt on {{ site.domain }}:
+
+
+Attempt date:   {{ attempt_time }}
+Username:       {{ username }}
+Success:        {{ login_success }}
+{% if not login_success %}
+Failures:       {{ failures }}
+{% endif %}
+IP address:     {{ ip_address }}
+FQDN:           {{ fqdn }}
+User Agent:     {{ user_agent }}
+
+
+http://{{ site.domain }}/
+{% endblock %}
