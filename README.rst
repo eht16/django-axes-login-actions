@@ -19,7 +19,7 @@ Installation
 
     pip install django-axes-login-action
 
-- Add `django-axes-login-action` to `INSTALLED_APPS`
+- Add `axes_login_action` to `INSTALLED_APPS`
 
 
 Usage
