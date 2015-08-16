@@ -4,7 +4,7 @@ from axes.models import AccessAttempt
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.utils.importlib import import_module
+from importlib import import_module
 
 
 DEFAULT_ACTION = 'axes_login_actions.actions.email.notify'
