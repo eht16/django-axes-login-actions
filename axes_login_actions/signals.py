@@ -27,7 +27,7 @@ def import_dotted_path(path):
 
 
 #----------------------------------------------------------------------
-@receiver(post_save, sender=AccessAttempt)
+@receiver(post_save, sender=AccessAttempt, dispatch_uid='axes_login_actions_post_save')
 def access_attempt_handler(sender, instance, **kwargs):
     for action_path in ACTIONS:
         action = import_dotted_path(action_path)
