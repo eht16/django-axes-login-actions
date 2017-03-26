@@ -41,6 +41,11 @@ a `axes.models.AccessAttempt` instance and the same kwargs as sent by the Django
 Changes
 =======
 
+* 2017-03-26 - 1.1.0:
+    * Add current datetime to the notification email
+    * Add a proper Django app config
+    * Ensure the signal handler is connected only once
+
 * 2015-08-16 - 1.0.1:
     * Use importlib from Python instead from Django
       (to remove Django deprecation warning)
@@ -52,7 +57,7 @@ Changes
 License
 =======
 
-Copyright (c) 2014-2015, Enrico Tröger
+Copyright (c) 2014-2017, Enrico Tröger
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
