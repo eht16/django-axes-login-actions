@@ -2,6 +2,7 @@
 Login attempt on {{ site.domain }}:
 
 
+Current date:   {{ current_time }}
 Attempt date:   {{ attempt_time }}
 Username:       {{ username }}
 Success:        {{ login_success }}

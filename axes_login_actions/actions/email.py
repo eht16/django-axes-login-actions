@@ -3,6 +3,7 @@
 from django.contrib.sites.models import Site
 from django.core.mail import mail_admins
 from django.template import loader, Context
+from django.utils.timezone import now
 from logging import getLogger as get_logger
 from socket import gethostbyaddr, error as SocketError
 
@@ -23,6 +24,7 @@ def notify(access_attempt, **kwargs):
         login_success = False
 
     context = dict(
+        current_time=now(),
         attempt_time=access_attempt.attempt_time,
         failures=access_attempt.failures,
         fqdn=fqdn,
