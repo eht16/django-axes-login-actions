@@ -17,10 +17,10 @@ def notify(access_attempt, **kwargs):
     fqdn = _resolve_ip_address_to_fqdn(ip_address)
 
     if access_attempt.failures == 0:
-        login_success_msg = u'successful'
+        login_success_msg = 'successful'
         login_success = True
     else:
-        login_success_msg = u'failed'
+        login_success_msg = 'failed'
         login_success = False
 
     context = dict(
@@ -36,7 +36,7 @@ def notify(access_attempt, **kwargs):
         user_agent=access_attempt.user_agent,
         username=access_attempt.username)
 
-    subject = u'Security: %(site_domain)s: %(login_success_msg)s login attempt by %(ip_address)s (%(fqdn)s)' % context
+    subject = 'Security: %(site_domain)s: %(login_success_msg)s login attempt by %(ip_address)s (%(fqdn)s)' % context
     message = _render_email_message(context)
 
     mail_admins(subject, message, fail_silently=False)
@@ -48,8 +48,8 @@ def _resolve_ip_address_to_fqdn(ip_address):
         return None
     try:
         return gethostbyaddr(ip_address)[0]
-    except SocketError, e:
-        logger.warn(u'IP -> FQDN resolution failed for "%s": %s', ip_address, unicode(e))
+    except SocketError as e:
+        logger.warn('IP -> FQDN resolution failed for "%s": %s', ip_address, str(e))
 
 
 #----------------------------------------------------------------------
