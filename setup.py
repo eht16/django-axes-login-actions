@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 NAME = 'django-axes-login-actions'
-VERSION = '1.1.0'
+VERSION = '1.2.0'
 DESCRIPTION = """Perform one or more actions if someone performed a login, e.g. to the admin interface."""
 
 setup(

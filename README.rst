@@ -41,6 +41,9 @@ a `axes.models.AccessAttempt` instance and the same kwargs as sent by the Django
 Changes
 =======
 
+* 2017-07-15 - 1.2.0:
+    * Support Python3
+
 * 2017-03-26 - 1.1.0:
     * Add current datetime to the notification email
     * Add a proper Django app config
