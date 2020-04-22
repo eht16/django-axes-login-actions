@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
+from logging import getLogger as get_logger
+from socket import gethostbyaddr, error as SocketError
+
 from django.contrib.sites.models import Site
 from django.core.mail import mail_admins
 from django.template import loader, Context
 from django.utils.timezone import now
-from logging import getLogger as get_logger
-from socket import gethostbyaddr, error as SocketError
+
 
 logger = get_logger(__name__)
 
@@ -16,7 +18,7 @@ def notify(access_attempt, **kwargs):
     ip_address = access_attempt.ip_address
     fqdn = _resolve_ip_address_to_fqdn(ip_address)
 
-    if access_attempt.failures == 0:
+    if access_attempt.failures_since_start == 0:
         login_success_msg = 'successful'
         login_success = True
     else:
@@ -26,7 +28,7 @@ def notify(access_attempt, **kwargs):
     context = dict(
         current_time=now(),
         attempt_time=access_attempt.attempt_time,
-        failures=access_attempt.failures,
+        failures=access_attempt.failures_since_start,
         fqdn=fqdn,
         site_domain=site.domain,
         site=site,
@@ -55,4 +57,4 @@ def _resolve_ip_address_to_fqdn(ip_address):
 #----------------------------------------------------------------------
 def _render_email_message(context):
     template = loader.get_template("axes_login_actions/email_notify.txt")
-    return template.render(Context(context))
+    return template.render(context)
