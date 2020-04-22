@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from logging import getLogger as get_logger
-from socket import gethostbyaddr, error as SocketError
+from socket import error as SocketError
+from socket import gethostbyaddr
 
 from django.contrib.sites.models import Site
 from django.core.mail import mail_admins
-from django.template import loader, Context
+from django.template import loader
 from django.utils.timezone import now
 
 
 logger = get_logger(__name__)
 
 
-#----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 def notify(access_attempt, **kwargs):
     site = Site.objects.get_current()
     ip_address = access_attempt.ip_address
@@ -38,13 +39,14 @@ def notify(access_attempt, **kwargs):
         user_agent=access_attempt.user_agent,
         username=access_attempt.username)
 
-    subject = 'Security: %(site_domain)s: %(login_success_msg)s login attempt by %(ip_address)s (%(fqdn)s)' % context
+    subject = 'Security: %(site_domain)s: %(login_success_msg)s ' \
+        'login attempt by %(ip_address)s (%(fqdn)s)' % context
     message = _render_email_message(context)
 
     mail_admins(subject, message, fail_silently=False)
 
 
-#----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 def _resolve_ip_address_to_fqdn(ip_address):
     if ip_address is None:
         return None
@@ -54,7 +56,7 @@ def _resolve_ip_address_to_fqdn(ip_address):
         logger.warn('IP -> FQDN resolution failed for "%s": %s', ip_address, str(e))
 
 
-#----------------------------------------------------------------------
+# ----------------------------------------------------------------------
 def _render_email_message(context):
     template = loader.get_template("axes_login_actions/email_notify.txt")
     return template.render(context)

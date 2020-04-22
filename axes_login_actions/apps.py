@@ -3,10 +3,9 @@
 from django.apps import AppConfig
 
 
-# #######################################################################
 class AxesLoginActionsConfig(AppConfig):
     name = 'axes_login_actions'
 
     # ----------------------------------------------------------------------
     def ready(self):
-        import axes_login_actions.signals
+        import axes_login_actions.signals  # noqa
