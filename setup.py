@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 NAME = 'django-axes-login-actions'
-VERSION = '1.2.0'
+VERSION = '1.3.0'
 DESCRIPTION = 'Perform one or more actions if someone ' \
     'performed a login, e.g. to the admin interface.'
 
@@ -13,6 +13,7 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     long_description=(open('README.rst', 'r').read()),
+    long_description_content_type="text/x-rst",
     keywords='django, security, authentication',
     author='Enrico Tröger',
     author_email='enrico.troeger@uvena.de',

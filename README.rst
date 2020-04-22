@@ -41,6 +41,9 @@ a `axes.models.AccessAttempt` instance and the same kwargs as sent by the Django
 Changes
 =======
 
+* 2020-04-22 - 1.3.0:
+    * Support Django 2.x and django-axes 5.x
+
 * 2017-07-15 - 1.2.0:
     * Support Python3
 
@@ -60,7 +63,7 @@ Changes
 License
 =======
 
-Copyright (c) 2014-2017, Enrico Tröger
+Copyright (c) 2014, Enrico Tröger
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
